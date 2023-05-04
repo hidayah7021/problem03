@@ -40,19 +40,48 @@ public class MainActivity extends AppCompatActivity {
         editPax = findViewById(R.id.editPax);
         editAmount = findViewById(R.id.editAmount);
         editDiscount = findViewById(R.id.editDiscount);
-        svsButton.setOnClickListener(new View.OnClickListener() {
+
+        splitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // get amount, multiply with gst or svs, divide among pax
-                boolean isChecked = svsButton.isChecked();
+                // code requirements;
+                // get state of toggle button
+                // enabling and disabling etInput
+                boolean isChecked = splitButton.isPressed();
                 if (isChecked) {
-                    ;
+                    svsButton.isChecked();
+                    // svs
+                    double svsPrice = 110.0;
+                    int price1 = Integer.parseInt(editAmount.getText().toString());
+                    double result = ((double) svsPrice/price1+price1);
+                    String disc = editDiscount.getText().toString();
+                    String dis = Integer.valueOf(String);
+                    int discount = Integer.parseInt(editAmount.getText().toString());
+                    double result2 = ((double) result-discount);
                 }else{
-                    ;
+                    // gst
+                    gstButton.isChecked();
+                    double gstPrice = 108.0;
+                    int price2 = Integer.parseInt(editAmount.getText().toString());
+                    double result = ((double) gstPrice/price2+price2);
+                    String disc = editDiscount.getText().toString();
+                    String dis = Integer.valueOf(String);
+                    int discount = Integer.parseInt(editAmount.getText().toString());
+                    double result2 = ((double) result-discount);
+
+                    String stringResponse = .getText().toString();
+                    int checkedRadioId = rgPayment.getCheckedRadioButtonId();
+                    if(checkedRadioId == R.id.radioCash){
+                        // if male; he says ...
+                        stringResponse = "Total Bill: " + result2;
+                    }else{
+                        // she says ...
+                        stringResponse = "Total Bill: " + stringResponse;
+                    }
+                    txDisplay.setText(stringResponse);
                 }
             }
         });
-
 
     }
 }
